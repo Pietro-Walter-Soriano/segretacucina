@@ -90,7 +90,7 @@ export default function App() {
       )}
 
       {/* Navigation */}
-      <nav className={`fixed w-full top-0 z-50 transform-gpu transition-[padding] duration-300 ease-out ${isScrolled ? "py-3" : "py-6"}`}>
+      <nav className="fixed w-full top-0 z-50 transform-gpu py-4">
         {/* Sfondi sovrapposti: crossfade PRECISO sull'opacità (gestito dalla GPU)
             tra il gradiente (stato in cima) e il bianco pieno (stato in scroll). */}
         <div
