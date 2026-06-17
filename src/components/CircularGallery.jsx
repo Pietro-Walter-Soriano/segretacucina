@@ -522,6 +522,17 @@ class App {
     this.scroll.last = this.scroll.current;
     this.raf = window.requestAnimationFrame(this.update.bind(this));
   }
+  start() {
+    // Riavvia il loop solo se era fermo (evita rAF doppi).
+    if (this.raf == null) this.update();
+  }
+  stop() {
+    // Ferma del tutto il rendering WebGL quando la gallery è fuori schermo.
+    if (this.raf != null) {
+      window.cancelAnimationFrame(this.raf);
+      this.raf = null;
+    }
+  }
   addEventListeners() {
     this.boundOnResize = this.onResize.bind(this);
     this.boundOnWheel = this.onWheel.bind(this);
@@ -569,6 +580,7 @@ export default function CircularGallery({
   useEffect(() => {
     if (!containerRef.current) return;
     let app;
+    let observer;
     let isMounted = true;
     resolveFont(font, fontUrl).then(resolvedFont => {
       if (!isMounted || !containerRef.current) return;
@@ -581,9 +593,23 @@ export default function CircularGallery({
         scrollSpeed,
         scrollEase
       });
+
+      // Renderizza solo quando la gallery è (quasi) visibile: fuori schermo il
+      // loop WebGL si ferma e libera GPU/CPU per uno scroll fluido nel resto
+      // della pagina. `rootMargin` la riattiva poco prima che entri in vista.
+      observer = new IntersectionObserver(
+        entries => {
+          if (!app) return;
+          if (entries[0].isIntersecting) app.start();
+          else app.stop();
+        },
+        { rootMargin: '200px 0px' }
+      );
+      observer.observe(containerRef.current);
     });
     return () => {
       isMounted = false;
+      if (observer) observer.disconnect();
       if (app) app.destroy();
     };
   }, [items, bend, textColor, borderRadius, font, fontUrl, scrollSpeed, scrollEase]);
