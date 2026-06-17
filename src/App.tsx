@@ -5,6 +5,7 @@ import ScrollStack, { ScrollStackItem } from "./components/ScrollStack";
 
 import CircularGallery from "./components/CircularGallery";
 import Lanyard from "./components/Lanyard";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 const fadeUpVariant = {
   hidden: { opacity: 0, y: 30, scale: 0.95 },
@@ -51,14 +52,16 @@ export default function App() {
       
       {/* Vip Pass Fixed to Top Right */}
       <div className="fixed -top-16 md:-top-24 right-4 md:right-12 z-40 w-48 h-[450px] md:w-72 md:h-[700px] pointer-events-auto">
-        <Lanyard 
-          position={[0, 0, 25]} 
-          gravity={[0, -40, 0]} 
-          frontImage="https://images.unsplash.com/photo-1544148103-0773bf10d330?q=80&w=600&auto=format&fit=crop"
-          backImage="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=600&auto=format&fit=crop"
-          imageFit="cover"
-          lanyardWidth={1.5}
-        />
+        <ErrorBoundary>
+          <Lanyard
+            position={[0, 0, 25]}
+            gravity={[0, -40, 0]}
+            frontImage="https://images.unsplash.com/photo-1544148103-0773bf10d330?q=80&w=600&auto=format&fit=crop"
+            backImage="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=600&auto=format&fit=crop"
+            imageFit="cover"
+            lanyardWidth={1.5}
+          />
+        </ErrorBoundary>
       </div>
 
       {/* Navigation */}
