@@ -7,6 +7,9 @@ import CircularGallery from "./components/CircularGallery";
 import Lanyard from "./components/Lanyard";
 import ErrorBoundary from "./components/ErrorBoundary";
 
+// Card 3D (Lanyard) temporaneamente disattivata. Metti `true` per riattivarla.
+const SHOW_VIP_CARD = false;
+
 const fadeUpVariant = {
   hidden: { opacity: 0, y: 30, scale: 0.95 },
   visible: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", stiffness: 100, damping: 12 } }
@@ -70,19 +73,21 @@ export default function App() {
     <div className="bg-bianco min-h-screen text-blu-scuro overflow-x-hidden font-sans relative">
       
       {/* Vip Pass Fixed to Top Right */}
-      <div className="fixed -top-16 md:-top-24 right-4 md:right-12 z-40 w-48 h-[450px] md:w-72 md:h-[700px] pointer-events-auto">
-        <ErrorBoundary>
-          <Lanyard
-            position={[0, 0, 25]}
-            gravity={[0, -40, 0]}
-            frontImage="https://images.unsplash.com/photo-1544148103-0773bf10d330?q=80&w=600&auto=format&fit=crop"
-            backImage="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=600&auto=format&fit=crop"
-            imageFit="cover"
-            lanyardWidth={1.5}
-            paused={isScrolling}
-          />
-        </ErrorBoundary>
-      </div>
+      {SHOW_VIP_CARD && (
+        <div className="fixed -top-16 md:-top-24 right-4 md:right-12 z-40 w-48 h-[450px] md:w-72 md:h-[700px] pointer-events-auto">
+          <ErrorBoundary>
+            <Lanyard
+              position={[0, 0, 25]}
+              gravity={[0, -40, 0]}
+              frontImage="https://images.unsplash.com/photo-1544148103-0773bf10d330?q=80&w=600&auto=format&fit=crop"
+              backImage="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=600&auto=format&fit=crop"
+              imageFit="cover"
+              lanyardWidth={1.5}
+              paused={isScrolling}
+            />
+          </ErrorBoundary>
+        </div>
+      )}
 
       {/* Navigation */}
       <nav className={`fixed w-full top-0 z-50 transform-gpu transition-[padding] duration-300 ease-out ${isScrolled ? "py-3" : "py-6"}`}>
