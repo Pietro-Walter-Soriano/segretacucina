@@ -28,6 +28,7 @@ const BouncyBtn = ({ children, primary }: { children: React.ReactNode, primary?:
 
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolling, setIsScrolling] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const LOGO_URL = "/logo.png"; // Replace with your uploaded logo
@@ -35,7 +36,14 @@ export default function App() {
 
   useEffect(() => {
     let ticking = false;
+    let scrollEndTimer: ReturnType<typeof setTimeout>;
     const handleScroll = () => {
+      // Mentre si scrolla mettiamo in pausa la scena 3D (vedi prop `paused` del
+      // Lanyard) per liberare il main thread; si riattiva ~150ms dopo lo stop.
+      setIsScrolling(true);
+      clearTimeout(scrollEndTimer);
+      scrollEndTimer = setTimeout(() => setIsScrolling(false), 150);
+
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(() => {
@@ -44,7 +52,10 @@ export default function App() {
       });
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(scrollEndTimer);
+    };
   }, []);
 
   useEffect(() => {
@@ -68,6 +79,7 @@ export default function App() {
             backImage="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=600&auto=format&fit=crop"
             imageFit="cover"
             lanyardWidth={1.5}
+            paused={isScrolling}
           />
         </ErrorBoundary>
       </div>
