@@ -34,8 +34,16 @@ export default function App() {
   const TABLES_URL = "https://storage.googleapis.com/aistudio-yeti-public-assets/k8p8x0k44n89.jpeg";
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 30);
-    window.addEventListener("scroll", handleScroll);
+    let ticking = false;
+    const handleScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        setIsScrolled(window.scrollY > 30);
+        ticking = false;
+      });
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -65,7 +73,7 @@ export default function App() {
       </div>
 
       {/* Navigation */}
-      <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ease-out ${isScrolled ? "bg-bianco/95 backdrop-blur-md shadow-lg py-3" : "bg-gradient-to-b from-azzurro-dark/50 to-transparent py-6"}`}>
+      <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ease-out ${isScrolled ? "bg-bianco shadow-lg py-3" : "bg-gradient-to-b from-azzurro-dark/50 to-transparent py-6"}`}>
         <div className="max-w-7xl mx-auto px-4 md:px-6 flex items-center justify-between">
           
           <motion.div 
@@ -89,7 +97,7 @@ export default function App() {
                   const el = document.getElementById(item.id);
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className={`hover:text-giallo bg-bianco/20 px-4 py-2 rounded-full transition-colors duration-300 ${isScrolled ? "text-blu-scuro hover:bg-giallo/30" : "text-bianco drop-shadow-md backdrop-blur-sm"}`}
+                className={`hover:text-giallo bg-bianco/20 px-4 py-2 rounded-full transition-colors duration-300 ${isScrolled ? "text-blu-scuro hover:bg-giallo/30" : "text-bianco drop-shadow-md"}`}
               >
                 {item.name}
               </a>
