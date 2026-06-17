@@ -73,7 +73,17 @@ export default function App() {
       </div>
 
       {/* Navigation */}
-      <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ease-out ${isScrolled ? "bg-bianco shadow-lg py-3" : "bg-gradient-to-b from-azzurro-dark/50 to-transparent py-6"}`}>
+      <nav className={`fixed w-full top-0 z-50 transform-gpu transition-[padding] duration-300 ease-out ${isScrolled ? "py-3" : "py-6"}`}>
+        {/* Sfondi sovrapposti: crossfade PRECISO sull'opacità (gestito dalla GPU)
+            tra il gradiente (stato in cima) e il bianco pieno (stato in scroll). */}
+        <div
+          aria-hidden="true"
+          className={`pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-azzurro-dark/50 to-transparent transition-opacity duration-300 ease-out ${isScrolled ? "opacity-0" : "opacity-100"}`}
+        />
+        <div
+          aria-hidden="true"
+          className={`pointer-events-none absolute inset-0 -z-10 bg-bianco shadow-lg transition-opacity duration-300 ease-out ${isScrolled ? "opacity-100" : "opacity-0"}`}
+        />
         <div className="max-w-7xl mx-auto px-4 md:px-6 flex items-center justify-between">
           
           <motion.div 
