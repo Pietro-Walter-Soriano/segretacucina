@@ -237,7 +237,7 @@ export default function App() {
                 {/* The chill seating frame */}
                 <div className="rounded-[2.5rem] md:rounded-[4rem] overflow-hidden border-[6px] md:border-8 border-azzurro shadow-xl relative z-10 bg-bianco mx-auto">
                   {/* Sostituisci il link qui sotto con il tuo link di Google Drive o con il percorso dell'immagine caricata (es: "/mia-immagine.jpg") */}
-                  <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?q=80&w=2940&auto=format&fit=crop" alt="La tua immagine" className="w-full aspect-video md:aspect-[4/3] object-cover block" />
+                  <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?q=80&w=1200&auto=format&fit=crop" alt="La tua immagine" loading="lazy" decoding="async" className="w-full aspect-video md:aspect-[4/3] object-cover block" />
                 </div>
                 
                 <div className="flex justify-between items-center -mt-8 md:-mt-12 px-8 md:px-12 relative z-20">
@@ -297,14 +297,14 @@ export default function App() {
             fontUrl="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap"
             font="bold 30px Orbitron"
             items={[
-               { image: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=2940&auto=format&fit=crop', text: 'Spiaggia' },
-               { image: 'https://images.unsplash.com/photo-1544148103-0773bf10d330?q=80&w=2940&auto=format&fit=crop', text: 'Lido' },
-               { image: 'https://images.unsplash.com/photo-1534351590666-13e3e96b5017?q=80&w=2940&auto=format&fit=crop', text: 'Cocktails' },
-               { image: 'https://images.unsplash.com/photo-1541804245451-2796ac6c2fa9?q=80&w=2940&auto=format&fit=crop', text: 'Tramonti' },
-               { image: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=2874&auto=format&fit=crop', text: 'Food' },
-               { image: 'https://images.unsplash.com/photo-1470337458703-4f5afd5272a2?q=80&w=2938&auto=format&fit=crop', text: 'Vibes' },
-               { image: 'https://images.unsplash.com/photo-1563245372-f21724e3856d?q=80&w=2929&auto=format&fit=crop', text: 'Relax' },
-               { image: 'https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?q=80&w=2940&auto=format&fit=crop', text: 'Coffee' },
+               { image: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=1200&auto=format&fit=crop', text: 'Spiaggia' },
+               { image: 'https://images.unsplash.com/photo-1544148103-0773bf10d330?q=80&w=1200&auto=format&fit=crop', text: 'Lido' },
+               { image: 'https://images.unsplash.com/photo-1534351590666-13e3e96b5017?q=80&w=1200&auto=format&fit=crop', text: 'Cocktails' },
+               { image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop', text: 'Tramonti' },
+               { image: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1200&auto=format&fit=crop', text: 'Food' },
+               { image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1200&auto=format&fit=crop', text: 'Vibes' },
+               { image: 'https://images.unsplash.com/photo-1563245372-f21724e3856d?q=80&w=1200&auto=format&fit=crop', text: 'Relax' },
+               { image: 'https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?q=80&w=1200&auto=format&fit=crop', text: 'Coffee' },
             ]}
           />
         </div>
@@ -340,7 +340,7 @@ export default function App() {
           <ScrollStackItem>
             <div className="bg-bianco rounded-[2rem] md:rounded-[3rem] p-6 md:p-12 text-center shadow-[0_8px_0_rgba(253,224,71,1)] md:shadow-[0_12px_0_rgba(253,224,71,1)] border-4 border-giallo relative flex flex-col md:flex-row items-center gap-6 md:gap-10">
               <div id="food-drink" className="w-40 h-40 md:w-56 md:h-56 shrink-0 rounded-full overflow-hidden border-4 md:border-8 border-bianco shadow-lg relative bg-bianco">
-                <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=2874&auto=format&fit=crop" className="w-full h-full object-cover" alt="Food & Drink" />
+                <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1200&auto=format&fit=crop" loading="lazy" decoding="async" className="w-full h-full object-cover" alt="Food & Drink" />
               </div>
               <div className="text-center md:text-left">
                 <h3 className="text-4xl md:text-5xl text-blu-scuro font-bold mb-3 md:mb-4">Food & Drink</h3>
@@ -362,7 +362,7 @@ export default function App() {
                 </button>
               </div>
               <div className="w-40 h-40 md:w-56 md:h-56 shrink-0 rounded-full overflow-hidden border-4 md:border-8 border-azzurro shadow-lg relative bg-bianco order-1 md:order-2">
-                <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?q=80&w=2940&auto=format&fit=crop" className="w-full h-full object-cover" alt="Beach & Lido" />
+                <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?q=80&w=1200&auto=format&fit=crop" loading="lazy" decoding="async" className="w-full h-full object-cover" alt="Beach & Lido" />
               </div>
             </div>
           </ScrollStackItem>
