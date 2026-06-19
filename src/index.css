@@ -1,13 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-azzurro: #22d3ee; /* Bright, playful cyan/blue */
-  --color-azzurro-dark: #0284c7; 
-  --color-giallo: #fde047; /* Bright, sunny yellow */
-  --color-giallo-dark: #eab308;
-  --color-bianco: #ffffff;
-  --color-blu-scuro: #082f49;
-  
+  /* Palette "Mare & Legno": campagna + mare + serenità, toni naturali (niente neon) */
+  --color-azzurro: #7fb7c4; /* azzurro mare attenuato */
+  --color-azzurro-dark: #2e6e7e; /* mare profondo / teal */
+  --color-giallo: #f2c94c; /* girasole tenue, caldo */
+  --color-giallo-dark: #d9a93c;
+  --color-bianco: #f8f3e8; /* bianco caldo / sabbia chiara */
+  --color-blu-scuro: #1c4a4a; /* verde-petrolio caldo (al posto del navy freddo) */
+  --color-legno: #b07a4f; /* accento legno caldo */
+  --color-sabbia: #eadfc8; /* sabbia */
+
   --font-serif: "Fredoka", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Fredoka", ui-sans-serif, system-ui, sans-serif;
 }

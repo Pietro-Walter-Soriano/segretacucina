@@ -294,8 +294,8 @@ export default function App() {
             textColor="#ffffff"
             borderRadius={0.05}
             scrollEase={0.02}
-            fontUrl="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap"
-            font="bold 30px Orbitron"
+            fontUrl="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&display=swap"
+            font="bold 34px Fredoka"
             items={[
                { image: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=1200&auto=format&fit=crop', text: 'Spiaggia' },
                { image: 'https://images.unsplash.com/photo-1544148103-0773bf10d330?q=80&w=1200&auto=format&fit=crop', text: 'Lido' },
