@@ -3,12 +3,22 @@ import { Menu, X, MapPin, Smile, Sun } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import ScrollStack, { ScrollStackItem } from "./components/ScrollStack";
 
-import CircularGallery from "./components/CircularGallery";
+import Stack from "./components/Stack";
 import Lanyard from "./components/Lanyard";
 import ErrorBoundary from "./components/ErrorBoundary";
 
 // Card 3D (Lanyard) temporaneamente disattivata. Metti `true` per riattivarla.
 const SHOW_VIP_CARD = false;
+
+// Foto della gallery (pila trascinabile). Sostituire con foto reali del lido.
+const galleryPhotos = [
+  { src: "https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=600&auto=format&fit=crop", alt: "Spiaggia" },
+  { src: "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?q=80&w=600&auto=format&fit=crop", alt: "Cocktails" },
+  { src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=600&auto=format&fit=crop", alt: "Tramonti" },
+  { src: "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=600&auto=format&fit=crop", alt: "Food" },
+  { src: "https://images.unsplash.com/photo-1563245372-f21724e3856d?q=80&w=600&auto=format&fit=crop", alt: "Relax" },
+  { src: "https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?q=80&w=600&auto=format&fit=crop", alt: "Coffee" },
+];
 
 const fadeUpVariant = {
   hidden: { opacity: 0, y: 30, scale: 0.95 },
@@ -283,30 +293,22 @@ export default function App() {
       <section id="gallery" className="relative w-full wood-texture overflow-hidden py-12 border-y-8 border-giallo">
         <div className="absolute inset-0 bg-black/20"></div>
         
-        <div className="text-center mb-6 relative z-10">
+        <div className="text-center mb-8 relative z-10">
           <h2 className="text-4xl md:text-5xl text-bianco font-bold drop-shadow-md">I Tuoi Momenti</h2>
-          <p className="text-giallo font-medium text-xl mt-2">Scorri per scoprire</p>
+          <p className="text-giallo font-medium text-xl mt-2">Trascina le foto 📸</p>
         </div>
 
-        <div style={{ height: '600px', position: 'relative' }} className="z-10 cursor-grab active:cursor-grabbing">
-          <CircularGallery
-            bend={3}
-            textColor="#ffffff"
-            borderRadius={0.05}
-            scrollEase={0.02}
-            fontUrl="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&display=swap"
-            font="bold 34px Fredoka"
-            items={[
-               { image: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=1200&auto=format&fit=crop', text: 'Spiaggia' },
-               { image: 'https://images.unsplash.com/photo-1544148103-0773bf10d330?q=80&w=1200&auto=format&fit=crop', text: 'Lido' },
-               { image: 'https://images.unsplash.com/photo-1534351590666-13e3e96b5017?q=80&w=1200&auto=format&fit=crop', text: 'Cocktails' },
-               { image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop', text: 'Tramonti' },
-               { image: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1200&auto=format&fit=crop', text: 'Food' },
-               { image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1200&auto=format&fit=crop', text: 'Vibes' },
-               { image: 'https://images.unsplash.com/photo-1563245372-f21724e3856d?q=80&w=1200&auto=format&fit=crop', text: 'Relax' },
-               { image: 'https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?q=80&w=1200&auto=format&fit=crop', text: 'Coffee' },
-            ]}
-          />
+        <div className="relative z-10 flex justify-center pb-6">
+          <div className="w-[320px] h-[250px] md:w-[460px] md:h-[340px]">
+            <Stack
+              randomRotation
+              sensitivity={150}
+              sendToBackOnClick
+              cards={galleryPhotos.map((p) => (
+                <img key={p.alt} src={p.src} alt={p.alt} className="card-image" />
+              ))}
+            />
+          </div>
         </div>
       </section>
 
