@@ -1,18 +1,25 @@
 @import "tailwindcss";
 
 @theme {
-  /* Palette "Mare & Legno": campagna + mare + serenità, toni naturali (niente neon) */
-  --color-azzurro: #7fb7c4; /* azzurro mare attenuato */
-  --color-azzurro-dark: #2e6e7e; /* mare profondo / teal */
-  --color-giallo: #f2c94c; /* girasole tenue, caldo */
-  --color-giallo-dark: #d9a93c;
-  --color-bianco: #f8f3e8; /* bianco caldo / sabbia chiara */
-  --color-blu-scuro: #1c4a4a; /* verde-petrolio caldo (al posto del navy freddo) */
-  --color-legno: #b07a4f; /* accento legno caldo */
-  --color-sabbia: #eadfc8; /* sabbia */
+  /* Palette: giallo + azzurro + legno (le sezioni scure usano il legno) */
+  --color-azzurro: #3db0d6; /* azzurro mare/cielo, vivido ma non neon */
+  --color-azzurro-dark: #2a7e9c;
+  --color-giallo: #f8ce3c; /* giallo sole caldo */
+  --color-giallo-dark: #e2ae2c;
+  --color-bianco: #faf6ee; /* bianco caldo / sabbia chiara */
+  --color-blu-scuro: #4a3320; /* LEGNO scuro: testo + sfondi sezioni scure */
+  --color-legno: #9b6a3f; /* legno medio (accenti) */
+  --color-legno-scuro: #5c3d22;
+  --color-sabbia: #eadfc8;
 
   --font-serif: "Fredoka", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Fredoka", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Texture legno per le superfici scure (tavolo "della nonna") */
+.wood-texture {
+  background-image: url("https://www.transparenttextures.com/patterns/purty-wood.png");
+  background-color: var(--color-blu-scuro);
 }
 
 @layer utilities {

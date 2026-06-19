@@ -280,8 +280,8 @@ export default function App() {
       </section>
 
       {/* Gallery Section */}
-      <section id="gallery" className="relative w-full bg-blu-scuro overflow-hidden py-12 border-y-8 border-giallo">
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
+      <section id="gallery" className="relative w-full wood-texture overflow-hidden py-12 border-y-8 border-giallo">
+        <div className="absolute inset-0 bg-black/20"></div>
         
         <div className="text-center mb-6 relative z-10">
           <h2 className="text-4xl md:text-5xl text-bianco font-bold drop-shadow-md">I Tuoi Momenti</h2>
@@ -387,7 +387,7 @@ export default function App() {
       {/* Playful Footer */}
       <footer className="bg-bianco pt-24 pb-12 overflow-hidden relative">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="bg-blu-scuro rounded-[3rem] p-8 md:p-16 text-center text-bianco border-8 border-giallo shadow-[0_15px_30px_rgba(0,0,0,0.2)] relative overflow-hidden">
+          <div className="wood-texture rounded-[3rem] p-8 md:p-16 text-center text-bianco border-8 border-giallo shadow-[0_15px_30px_rgba(0,0,0,0.2)] relative overflow-hidden">
             
             {/* Playful background suns in footer card */}
             <div className="absolute -top-20 -left-20 w-64 h-64 bg-azzurro border-8 border-bianco rounded-full opacity-40 float-anim"></div>
